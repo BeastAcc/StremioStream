@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "./index.py",
+            "use": "@vercel/python"
+        }
+    ],
+  
+  
+  
+  "routes": [
+
+        {
+
+            "src": "/(.*)",
+
+                  "headers": 
+
+                    { "Cache-Control":"s-maxage=1, stale-while-revalidate=40000"
+
+                    },
+
+                
+
+                            "dest": "/"
+
+        }
+
+    ]
+}

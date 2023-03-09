@@ -1,0 +1,1 @@
+from StremioStream.routes import app
