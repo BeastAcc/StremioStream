@@ -25,7 +25,7 @@ def getCatalog(genreFull='',search=''):
     else:
             url=TGARCHIVEAPI_URL_FOR_SEARCH.format(data_query,page)     
     res=requests.get(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'})
-    if len(json.loads(res.content)['documents'])>0:
+    if len(json.loads(res.content)['documents'])>0 and not genreFull:
            calatog_items=[CatalogMeta(description=data_query,name='All Results',id='ST'+str(data_query)).toMeta()]
     calatog_items.extend([CatalogMeta.fromJson(data=i).toMeta() for i in json.loads(res.content)['documents'] if 'video' in i.get('mime_type')])
     return calatog_items
