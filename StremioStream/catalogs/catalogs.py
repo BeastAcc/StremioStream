@@ -15,7 +15,7 @@ def getCatalog(genreFull='',search=''):
     page=1
     perPage=20 if genreFull else 60
     data=genreFull if genreFull else search
-    data_query=data
+    data_query=data.replace('%20',' ')
     calatog_items=[]
     if 'skip' in data:
             data_query=data.split('&')[0]
